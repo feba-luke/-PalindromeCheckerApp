@@ -11,6 +11,7 @@ public class PalindromeCheckerApp {
                 break;
             }
         }
+
         System.out.println("String: \"" + input + "\"");
         if (isPalindrome) {
             System.out.println("Result: The string is a palindrome.");
@@ -18,4 +19,15 @@ public class PalindromeCheckerApp {
             System.out.println("Result: The string is NOT a palindrome.");
         }
     }
-}
+        private  static boolean check(String s, int start, int end) {
+
+            if (start >= end) {
+                return true;
+            }
+            if (s.charAt(start) != s.charAt(end)) {
+                return false;
+            }
+
+            return check(s, start + 1, end - 1);
+        }
+    }
