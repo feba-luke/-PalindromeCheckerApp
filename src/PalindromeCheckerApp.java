@@ -1,22 +1,38 @@
+import java.util.Scanner;
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
+
     public static void main(String[] args) {
-        System.out.println("Welcome to Palindrome checker Management System");
-        System.out.println("Version:1.0");
-        System.out.println("System Initialized Succesfully");
-        String input = "radar";
+
+        System.out.println("Welcome to Palindrome Checker App");
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a word to check: ");
+        String input = scanner.nextLine();
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+
         boolean isPalindrome = true;
-        for (int i = 0; i < input.length() / 2; i++) {
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        System.out.println("String: \"" + input + "\"");
         if (isPalindrome) {
-            System.out.println("Result: The string is a palindrome.");
+            System.out.println("Result: " + input + " is a Palindrome");
         } else {
-            System.out.println("Result: The string is NOT a palindrome.");
+            System.out.println("Result: " + input + " is NOT a Palindrome");
         }
+
+        scanner.close();
     }
 }
